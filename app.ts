@@ -131,3 +131,60 @@ function gettingInfo(params: admin2) {
     params.getInfo
     params.attendence
 }
+
+
+
+// 1. Enum for fixed categories
+enum PaymentStatus {
+    PENDING = "PENDING",
+    SUCCESS = "SUCCESS",
+    FAILED = "FAILED"
+}
+
+// 2. Base Interface (The Blueprint)
+interface BaseTransaction {
+    id: string;
+    amount: number;
+    status: PaymentStatus;
+}
+
+// 3. Specific Interfaces extending the base
+interface CryptoPayment extends BaseTransaction {
+    walletAddress: string;
+    currency: "BTC" | "ETH" | "SOL"; // Union of literal strings
+}
+
+interface CardPayment extends BaseTransaction {
+    cardNumber: number;
+    expiryDate: string;
+}
+
+// 4. Intersection Type: Creating a "Receipt" by combining types
+type ReceiptInfo = {
+    issuedAt: Date;
+    tax: number;
+};
+
+type FullReceipt = BaseTransaction & ReceiptInfo;
+
+// 5. Function using a 
+// Accepts either Crypto or Card)
+function processPayment(payment: CryptoPayment | CardPayment) {
+    console.log(`Processing ID: ${payment.id}...`);
+    
+    // Logic check
+    if (payment.status === PaymentStatus.PENDING) {
+        console.log("Transaction is still processing.");
+    }
+}
+
+// --- TESTING THE CODE ---
+const mySale: CryptoPayment = {
+    id: "TXN_101",
+    amount: 500,
+    status: PaymentStatus.SUCCESS,
+    walletAddress: "0xABC123",
+    currency: "ETH" // Try changing this to "USD" to see the error!
+};
+
+processPayment(mySale);
