@@ -36,11 +36,35 @@ class LaptopMaker extends ComputerMaker {
     public material = "Fiber";
 
     changename() {
-        this.name = "HP"; 
+        this.name = "HP";
     }
 }
 
-let laptop = new LaptopMaker(); 
+let laptop = new LaptopMaker();
 
 laptop.material = "Carbon";
-laptop.changename();       
+laptop.changename();
+
+class Connection {
+    // Parent constructor
+    constructor(protected status: string) { }
+
+    disconnect() {
+        this.status = "OFFLINE";
+        console.log("Disconnected from server.");
+    }
+}
+
+class VideoCall extends Connection {
+
+    constructor(status: string, public resolution: string) {
+        super(status);
+    }
+
+    showDetails() {
+        console.log(`Status: ${this.status}, Quality: ${this.resolution}`);
+    }
+}
+
+const myCall = new VideoCall("CONNECTED", "1080p");
+myCall.showDetails();

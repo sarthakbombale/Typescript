@@ -62,3 +62,28 @@ var LaptopMaker = /** @class */ (function (_super) {
 var laptop = new LaptopMaker();
 laptop.material = "Carbon";
 laptop.changename();
+var Connection = /** @class */ (function () {
+    // Parent constructor
+    function Connection(status) {
+        this.status = status;
+    }
+    Connection.prototype.disconnect = function () {
+        this.status = "OFFLINE";
+        console.log("Disconnected from server.");
+    };
+    return Connection;
+}());
+var VideoCall = /** @class */ (function (_super) {
+    __extends(VideoCall, _super);
+    function VideoCall(status, resolution) {
+        var _this = _super.call(this, status) || this;
+        _this.resolution = resolution;
+        return _this;
+    }
+    VideoCall.prototype.showDetails = function () {
+        console.log("Status: ".concat(this.status, ", Quality: ").concat(this.resolution));
+    };
+    return VideoCall;
+}(Connection));
+var myCall = new VideoCall("CONNECTED", "1080p");
+myCall.showDetails();
