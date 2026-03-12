@@ -87,3 +87,29 @@ var VideoCall = /** @class */ (function (_super) {
 }(Connection));
 var myCall = new VideoCall("CONNECTED", "1080p");
 myCall.showDetails();
+var Video = /** @class */ (function () {
+    function Video(title, duration) {
+        this.title = title;
+        this.duration = duration;
+    }
+    Video.prototype.play = function () {
+        console.log("Playing: ".concat(this.title));
+    };
+    return Video;
+}());
+var LiveStream = /** @class */ (function (_super) {
+    __extends(LiveStream, _super);
+    function LiveStream(title, viewers) {
+        var _this = _super.call(this, title, 0) || this;
+        _this.viewers = viewers;
+        return _this;
+    }
+    LiveStream.prototype.updateViewers = function (count) {
+        this.viewers = count;
+        console.log("".concat(this.title, " now has ").concat(this.viewers, " viewers."));
+    };
+    return LiveStream;
+}(Video));
+var myLive = new LiveStream("Typescript Mastery", 150);
+myLive.play();
+myLive.updateViewers(200);
