@@ -94,3 +94,62 @@ class LiveStream extends Video {
 const myLive = new LiveStream("Typescript Mastery", 150);
 myLive.play();
 myLive.updateViewers(200);
+
+
+
+class user {
+
+    constructor(public readonly id: number, public name: string) {
+        this.id = id;
+        this.name = name;
+    }
+
+}
+
+const users = new user(4, "harsh");
+users.name = 'sarthak';
+
+
+class cartoon {
+    constructor(public readonly id: number, public name: string, public readonly view: number) {
+        this.id = id;
+        this.name = name;
+        this.view = view;
+    }
+}
+
+let doremon = new cartoon(1, "doremon", 67000000);
+let sinchan = new cartoon(1, "sinchan", 70000000);
+
+sinchan.name = "sinchan movie action kaminee"
+
+
+class User {
+    constructor(public _id: number, public _name: string, public _work?: string, private _salary: number) { }
+
+
+    get id() {
+        return this._id;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    get work() {
+        return this._work
+    }
+
+    salary(value: number) {
+        if (value <= 0) {
+            console.log("salary can;t be 0 or negative")
+        } else {
+            this._salary = value;
+        }
+    }
+}
+
+let u = new User(1, "sarthak", "fulllstack developer", 200000);
+u._work = "Mern Fulllstack developer";
+u.salary(120000);
+

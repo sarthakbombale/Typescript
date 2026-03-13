@@ -113,3 +113,69 @@ var LiveStream = /** @class */ (function (_super) {
 var myLive = new LiveStream("Typescript Mastery", 150);
 myLive.play();
 myLive.updateViewers(200);
+var user = /** @class */ (function () {
+    function user(id, name) {
+        this.id = id;
+        this.name = name;
+        this.id = id;
+        this.name = name;
+    }
+    return user;
+}());
+var users = new user(4, "harsh");
+users.name = 'sarthak';
+var cartoon = /** @class */ (function () {
+    function cartoon(id, name, view) {
+        this.id = id;
+        this.name = name;
+        this.view = view;
+        this.id = id;
+        this.name = name;
+        this.view = view;
+    }
+    return cartoon;
+}());
+var doremon = new cartoon(1, "doremon", 67000000);
+var sinchan = new cartoon(1, "sinchan", 70000000);
+sinchan.name = "sinchan movie action kaminee";
+var User = /** @class */ (function () {
+    function User(_id, _name, _work, _salary) {
+        this._id = _id;
+        this._name = _name;
+        this._work = _work;
+        this._salary = _salary;
+    }
+    Object.defineProperty(User.prototype, "id", {
+        get: function () {
+            return this._id;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(User.prototype, "name", {
+        get: function () {
+            return this._name;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(User.prototype, "work", {
+        get: function () {
+            return this._work;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    User.prototype.salary = function (value) {
+        if (value <= 0) {
+            console.log("salary can;t be 0 or negative");
+        }
+        else {
+            this._salary = value;
+        }
+    };
+    return User;
+}());
+var u = new User(1, "sarthak", "fulllstack developer", 200000);
+u._work = "Mern Fulllstack developer";
+u.salary(120000);
