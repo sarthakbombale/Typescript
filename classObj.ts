@@ -153,3 +153,98 @@ let u = new User(1, "sarthak", "fulllstack developer", 200000);
 u._work = "Mern Fulllstack developer";
 u.salary(120000);
 
+
+class SmartLight {
+    constructor(public brand: string, private brightness: number) {}
+
+    adjustBrightness(level: number) {
+        if (level >= 0 && level <= 100) {
+            this.brightness = level;
+            console.log(`${this.brand} light set to ${this.brightness}%`);
+        } else {
+            console.log("Invalid brightness level!");
+        }
+    }
+}
+
+let hallLight = new SmartLight("Philips", 50);
+hallLight.adjustBrightness(80);
+
+class Character {
+    constructor(public name: string, protected health: number) {}
+}
+
+class Warrior extends Character {
+    constructor(name: string, public armor: number) {
+        super(name, 100);
+    }
+
+    takeDamage(amount: number) {
+        this.health -= (amount - this.armor);
+        console.log(`${this.name} health is now: ${this.health}`);
+    }
+}
+
+let thor = new Warrior("Thor", 10);
+thor.takeDamage(30);
+
+
+
+class Order {
+    constructor(
+        public readonly orderId: string,
+        public item: string,
+        private price: number
+    ) {}
+
+    applyDiscount(amount: number) {
+        this.price -= amount;
+        console.log(`New price for ${this.item} is ${this.price}`);
+    }
+}
+
+let myOrder = new Order("ORD123", "Laptop", 50000);
+myOrder.applyDiscount(2000);
+// myOrder.orderId = "ORD999"; // Error
+
+
+class Album {
+    private songs: string[] = [];
+
+    constructor(public readonly title: string, public artist: string) {}
+
+    addSong(songName: string) {
+        this.songs.push(songName);
+    }
+
+    get trackCount() {
+        return this.songs.length;
+    }
+}
+
+let myAlbum = new Album("Evolution", "Sarthak");
+myAlbum.addSong("TypeScript Blues");
+myAlbum.addSong("Coding Night");
+console.log(myAlbum.trackCount);
+
+
+class Wallet {
+    constructor(public owner: string, private balance: number) {}
+
+    sendMoney(amount: number) {
+        if (amount > this.balance) {
+            console.log("Insufficient funds!");
+        } else {
+            this.balance -= amount;
+            console.log(`Sent ${amount}. Remaining: ${this.balance}`);
+        }
+    }
+
+    get currentBalance() {
+        return `Balance: ${this.balance}`;
+    }
+}
+
+let myWallet = new Wallet("Sarthak", 500);
+myWallet.sendMoney(200);
+console.log(myWallet.currentBalance);
