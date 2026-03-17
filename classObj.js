@@ -179,3 +179,136 @@ var User = /** @class */ (function () {
 var u = new User(1, "sarthak", "fulllstack developer", 200000);
 u._work = "Mern Fulllstack developer";
 u.salary(120000);
+var SmartLight = /** @class */ (function () {
+    function SmartLight(brand, brightness) {
+        this.brand = brand;
+        this.brightness = brightness;
+    }
+    SmartLight.prototype.adjustBrightness = function (level) {
+        if (level >= 0 && level <= 100) {
+            this.brightness = level;
+            console.log("".concat(this.brand, " light set to ").concat(this.brightness, "%"));
+        }
+        else {
+            console.log("Invalid brightness level!");
+        }
+    };
+    return SmartLight;
+}());
+var hallLight = new SmartLight("Philips", 50);
+hallLight.adjustBrightness(80);
+var Character = /** @class */ (function () {
+    function Character(name, health) {
+        this.name = name;
+        this.health = health;
+    }
+    return Character;
+}());
+var Warrior = /** @class */ (function (_super) {
+    __extends(Warrior, _super);
+    function Warrior(name, armor) {
+        var _this = _super.call(this, name, 100) || this;
+        _this.armor = armor;
+        return _this;
+    }
+    Warrior.prototype.takeDamage = function (amount) {
+        this.health -= (amount - this.armor);
+        console.log("".concat(this.name, " health is now: ").concat(this.health));
+    };
+    return Warrior;
+}(Character));
+var thor = new Warrior("Thor", 10);
+thor.takeDamage(30);
+var Order = /** @class */ (function () {
+    function Order(orderId, item, price) {
+        this.orderId = orderId;
+        this.item = item;
+        this.price = price;
+    }
+    Order.prototype.applyDiscount = function (amount) {
+        this.price -= amount;
+        console.log("New price for ".concat(this.item, " is ").concat(this.price));
+    };
+    return Order;
+}());
+var myOrder = new Order("ORD123", "Laptop", 50000);
+myOrder.applyDiscount(2000);
+// myOrder.orderId = "ORD999"; // Error
+var Album = /** @class */ (function () {
+    function Album(title, artist) {
+        this.title = title;
+        this.artist = artist;
+        this.songs = [];
+    }
+    Album.prototype.addSong = function (songName) {
+        this.songs.push(songName);
+    };
+    Object.defineProperty(Album.prototype, "trackCount", {
+        get: function () {
+            return this.songs.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Album;
+}());
+var myAlbum = new Album("Evolution", "Sarthak");
+myAlbum.addSong("TypeScript Blues");
+myAlbum.addSong("Coding Night");
+console.log(myAlbum.trackCount);
+var Wallet = /** @class */ (function () {
+    function Wallet(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+    Wallet.prototype.sendMoney = function (amount) {
+        if (amount > this.balance) {
+            console.log("Insufficient funds!");
+        }
+        else {
+            this.balance -= amount;
+            console.log("Sent ".concat(amount, ". Remaining: ").concat(this.balance));
+        }
+    };
+    Object.defineProperty(Wallet.prototype, "currentBalance", {
+        get: function () {
+            return "Balance: ".concat(this.balance);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Wallet;
+}());
+var myWallet = new Wallet("Sarthak", 500);
+myWallet.sendMoney(200);
+console.log(myWallet.currentBalance);
+var shape = /** @class */ (function () {
+    function shape(color) {
+        this.color = color;
+    }
+    shape.prototype.display = function () {
+        console.log("this is the color of ".concat(this.color));
+    };
+    return shape;
+}());
+var pet = /** @class */ (function () {
+    function pet(dogName, age) {
+        this.dogName = dogName;
+        this.age = age;
+    }
+    pet.prototype.sleep = function () {
+        console.log("my name ".concat(this.dogName));
+    };
+    return pet;
+}());
+var Dog = /** @class */ (function (_super) {
+    __extends(Dog, _super);
+    function Dog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Dog.prototype.makeSound = function () {
+        console.log("bhoooo bho");
+    };
+    return Dog;
+}(pet));
+var myDog = new Dog("dora", 4);

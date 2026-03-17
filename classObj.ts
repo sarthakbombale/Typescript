@@ -155,7 +155,7 @@ u.salary(120000);
 
 
 class SmartLight {
-    constructor(public brand: string, private brightness: number) {}
+    constructor(public brand: string, private brightness: number) { }
 
     adjustBrightness(level: number) {
         if (level >= 0 && level <= 100) {
@@ -171,7 +171,7 @@ let hallLight = new SmartLight("Philips", 50);
 hallLight.adjustBrightness(80);
 
 class Character {
-    constructor(public name: string, protected health: number) {}
+    constructor(public name: string, protected health: number) { }
 }
 
 class Warrior extends Character {
@@ -195,7 +195,7 @@ class Order {
         public readonly orderId: string,
         public item: string,
         private price: number
-    ) {}
+    ) { }
 
     applyDiscount(amount: number) {
         this.price -= amount;
@@ -211,7 +211,7 @@ myOrder.applyDiscount(2000);
 class Album {
     private songs: string[] = [];
 
-    constructor(public readonly title: string, public artist: string) {}
+    constructor(public readonly title: string, public artist: string) { }
 
     addSong(songName: string) {
         this.songs.push(songName);
@@ -229,7 +229,7 @@ console.log(myAlbum.trackCount);
 
 
 class Wallet {
-    constructor(public owner: string, private balance: number) {}
+    constructor(public owner: string, private balance: number) { }
 
     sendMoney(amount: number) {
         if (amount > this.balance) {
@@ -248,3 +248,29 @@ class Wallet {
 let myWallet = new Wallet("Sarthak", 500);
 myWallet.sendMoney(200);
 console.log(myWallet.currentBalance);
+
+abstract class shape {
+    constructor(public color: string) { }
+    abstract getArea(): number;
+    display() {
+        console.log(`this is the color of ${this.color}`)
+    }
+}
+
+abstract class pet {
+    constructor(public dogName: string, public age: number) { }
+
+    abstract makeSound(): void;
+
+    sleep() {
+        console.log(`my name ${this.dogName}`)
+    }
+}
+
+class Dog extends pet {
+    makeSound() {
+        console.log("bhoooo bho")
+    }
+}
+
+const myDog = new Dog("dora", 4)
