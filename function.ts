@@ -31,3 +31,38 @@ function throwError(msg: string): never {
 type MathFunc = (a: number, b: number) => number;
 
 const subb: MathFunc = (a, b) => a - b;
+
+function person(name: string, age: number, gender?: string, address: string = "Pune") {
+    if (gender === undefined) {
+        return `${name} from ${address} prefers not to say their gender.`;
+    }
+    return `${name} is ${gender} lives in ${address}`
+
+}
+console.log(person("Sarthak", 21, "Male", "Pune"));
+
+console.log(person("Ommi", 21, "Mithhu"));
+
+
+
+function calculate(a: number, b: number, operation: string = "Add") {
+    if (operation === "multiply") return a * b;
+    return a + b
+}
+
+console.log(calculate(10, 5));
+console.log(calculate(12, 5, "multiply"));
+
+
+//rest operators 
+
+function sums(...arr: Number[]) {
+    console.log(arr)
+}
+
+sums(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+function friends(...args: string[]) {
+    console.log(args);
+}
+friends("ommi", "Hari", "sujal")
