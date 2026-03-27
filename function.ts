@@ -66,3 +66,48 @@ function friends(...args: string[]) {
     console.log(args);
 }
 friends("ommi", "Hari", "sujal")
+
+
+interface User {
+    userName: string;
+    email: string;
+    age: number;
+    isPremium?: boolean; 
+}
+
+function login(details: User) {
+    console.log(`Welcome back, ${details.userName}`);
+}
+
+login({ userName: "Sarthak", email: "s@gmail.com", age: 21 });
+
+
+interface Camera {
+    brand: string;
+    resolution: number;
+    takePhoto(): void; 
+}
+
+const myCam: Camera = {
+    brand: "Sony",
+    resolution: 24,
+    takePhoto() {
+        console.log("Click! Photo taken.");
+    }
+};
+
+
+interface Product {
+    name: string;
+    price: number;
+}
+
+interface Electronic extends Product {
+    warranty: string;
+}
+
+const laptop: Electronic = {
+    name: "MacBook",
+    price: 120000,
+    warranty: "1 Year"
+};
