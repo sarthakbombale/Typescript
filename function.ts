@@ -111,3 +111,32 @@ const laptop: Electronic = {
     price: 120000,
     warranty: "1 Year"
 };
+
+interface SmartDevice {
+    brand: string;
+    turnOn(): void;
+}
+
+class Phone implements SmartDevice {
+    constructor(public brand: string, public model: string) {}
+
+    turnOn() {
+        console.log(`${this.brand} ${this.model} is booting up...`);
+    }
+}
+
+const myPhone = new Phone("iPhone", "15 Pro");
+myPhone.turnOn();
+
+interface ReadOnlyUser {
+    readonly dbId: number;
+    email: string;
+    couponCode?: string;
+}
+
+const sarthak: ReadOnlyUser = {
+    dbId: 9988,
+    email: "s@test.com"
+};
+
+sarthak.email = "new@test.com";
