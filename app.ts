@@ -53,6 +53,54 @@ function cat(obj: home) {
     obj.id
 }
 
+
+
+interface info {
+    name: string;
+    age: number;
+    address: string;
+}
+
+function validate(data: info) {
+    return `Name:${data.name}, Age:${data.age} ,Adress${data.address}`
+}
+
+const user = ({ name: "sarthak", age: 21, address: "Pune" })
+
+console.log(validate(user));
+
+
+interface authentication {
+    name: string;
+    age: number;
+    email: string;
+}
+
+function login(data: authentication) {
+    return `hello my name is ${data.name}  & i am ${data.age} year old contact me on ${data.email}`
+}
+
+const contact = ({ name: "hari", age: 20, email: "hari@gmail.com" })
+console.log(login(contact))
+
+
+interface student {
+    name: string;
+    age: number;
+    RollNo?: number;
+}
+
+function std(data: student) {
+    if (data.RollNo) {
+        return `hello here is std data name of student is  ${data.name} & age is ${data.age} & there RollNo is ${data.RollNo} `
+    }
+    return `hello here is std data name of student is  ${data.name} & age is ${data.age} & there RollNo is not assined yet`
+}
+const std1 = ({ name: "rahul", age: 12, RollNo: 1 });
+const std2 = ({ name: "sujal", age: 21 });
+
+console.log(std(std1));
+console.log(std(std2));
 //Extending interfaces
 
 interface admin {
@@ -79,6 +127,20 @@ function ABCD(obj: ABCD) {
     obj.hehe
 }
 
+interface Admin {
+    name: string;
+    roles: string;
+}
+interface User extends Admin {
+    duty: string;
+}
+
+function dashboard(data: User) {
+    return `${data.name}, ${data.roles} , ${data.duty}`
+}
+const users = ({ name: "Ramu", roles: "houseKeeping", duty: "nightShift" })
+console.log(dashboard(users))
+
 //Type aliases
 type sankhya = number;
 let a1: sankhya;
@@ -100,7 +162,6 @@ function func1(obj: value1) {
 }
 func1(false)
 func1(23)
-
 
 
 //intersection types 
@@ -171,7 +232,7 @@ type FullReceipt = BaseTransaction & ReceiptInfo;
 // Accepts either Crypto or Card)
 function processPayment(payment: CryptoPayment | CardPayment) {
     console.log(`Processing ID: ${payment.id}...`);
-    
+
     // Logic check
     if (payment.status === PaymentStatus.PENDING) {
         console.log("Transaction is still processing.");
