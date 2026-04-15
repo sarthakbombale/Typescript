@@ -167,3 +167,26 @@ class createProduct{
     const myitem = new createProduct("laptop Hp 12 gen",70000,Category.electronics)
      
      console.log(myitem)
+
+
+          enum userRole{
+         ADMIN="Admin",
+         EDITOR="editor",
+         VIEWER="Viewer"
+     }
+     
+     class users{
+         readonly userNames:string;
+         readonly userRoles:userRole;
+         readonly age:number
+         
+         constructor(userNames:string,userRoles:userRole,age:number){
+             this.userNames=userNames;
+             this.userRoles=userRoles;
+             this.age=age
+         }
+     }
+     
+     const feed = new users("Sarthak",userRole.ADMIN,21);
+     console.log(feed)
+     
