@@ -140,3 +140,30 @@ const sarthak: ReadOnlyUser = {
 };
 
 sarthak.email = "new@test.com";
+
+
+
+// controller kind logics
+
+enum Category{
+    electronics ="electronics",
+    clothing="clothing",
+    food="food"
+}
+
+
+class createProduct{
+    readonly title:string;
+    readonly  price:number;
+   readonly category :Category;
+    
+    constructor (
+        title:string,price:number,category :Category
+    ){this.title=title;
+    this.price=price;
+    this.category=category
+}}
+    
+    const myitem = new createProduct("laptop Hp 12 gen",70000,Category.electronics)
+     
+     console.log(myitem)
