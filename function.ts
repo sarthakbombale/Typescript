@@ -190,3 +190,54 @@ class createProduct{
      const feed = new users("Sarthak",userRole.ADMIN,21);
      console.log(feed)
      
+
+      enum Language{
+     Python="python",
+     Java="java",
+     Javascript="javascript"
+ }
+ 
+ class learn{
+ readonly name:string;
+ readonly age:number;
+ readonly address:string;
+ readonly language:Language
+ 
+ constructor(name:string,age:number,address:string,language:Language){
+     this.name=name;
+     this.age=age;
+     this.address=address;
+     this.language=language
+ }
+ }
+ 
+ const study = new learn("sarthak bomble",21,"Pune",Language.Python)
+ console.log(study);
+ 
+ 
+ enum bike{
+     Hero="hero",
+     Apache="apache",
+     Bullet="bulllet"
+ };
+ enum car{
+     Alto="alto",
+     Wagnor="wagnor",
+     Swift="swift"
+ }
+ 
+ class Vehicle{
+     readonly name:string;
+     readonly type:bike | car;
+     readonly km:number;
+     
+     constructor(name:string,type:bike | car,km:number){
+         this.name=name;
+         this.type=type;
+         this.km=km;
+     }
+ }
+ const drive = new Vehicle("Hari's Vehicle is",bike.Bullet,27)
+ console.log(drive)
+ 
+ 
