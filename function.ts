@@ -241,3 +241,24 @@ class createProduct{
  console.log(drive)
  
  
+
+ class ProductService {
+    saveProduct(data: any) {
+        console.log("Saving to MongoDB...", data);
+    }
+}
+
+class ProductController {
+    // This is how NestJS handles 'Dependency Injection'
+    constructor(private readonly productService: ProductService) {}
+
+    // Simulating a POST request
+    create(body: CreateProductDto) {
+        this.productService.saveProduct(body);
+        return { message: "Product Created!", status: 201 };
+    }
+}
+
+// Preparation for NestJS:
+const service = new ProductService();
+const controller = new ProductController(service);
