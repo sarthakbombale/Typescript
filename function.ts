@@ -249,10 +249,10 @@ class createProduct{
 }
 
 class ProductController {
-    // This is how NestJS handles 'Dependency Injection'
+    
     constructor(private readonly productService: ProductService) {}
 
-    // Simulating a POST request
+
     create(body: CreateProductDto) {
         this.productService.saveProduct(body);
         return { message: "Product Created!", status: 201 };
@@ -262,3 +262,16 @@ class ProductController {
 // Preparation for NestJS:
 const service = new ProductService();
 const controller = new ProductController(service);
+
+// 'T' is a placeholder for any type
+interface ApiResponse<T> {
+    status: number;
+    data: T;
+    message: string;
+}
+
+const userResponse: ApiResponse<{name: string}> = {
+    status: 200,
+    data: { name: "Sarthak" },
+    message: "Success"
+};
