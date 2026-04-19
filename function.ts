@@ -275,3 +275,21 @@ const userResponse: ApiResponse<{name: string}> = {
     data: { name: "Sarthak" },
     message: "Success"
 };
+
+
+interface User {
+  id: number;
+  name: string;
+}
+
+
+interface User {
+  email: string;
+}
+
+
+const newUser: User = {
+  id: 1,
+  name: "Arjun",
+  email: "arjun@example.com"
+};
