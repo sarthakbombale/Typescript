@@ -293,3 +293,40 @@ const newUser: User = {
   name: "Arjun",
   email: "arjun@example.com"
 };
+
+interface MyResponse<T> {
+  success: boolean;
+  data: T;
+  message: string;
+}
+
+function wrapData<T>(item: T): MyResponse<T> {
+  return {
+    success: true,
+    data: item,
+    message: "Operation successful",
+  };
+}
+
+const stringRes = wrapData("User Created");
+const userRes = wrapData({ id: 1, name: "Sarthak" });
+
+
+interface UserProfile {
+  id: string;
+  username: string;
+  email: string;
+  passwordHash: string;
+  bio: string;
+}
+
+
+type PublicProfile = Omit<UserProfile, "passwordHash">;
+
+type UpdatePayload = Partial<PublicProfile>;
+
+function updateMyUser(id: string, changes: UpdatePayload) {
+  console.log(`Updating user ${id} with:`, changes);
+}
+
+updateMyUser("123", { bio: "Updated my bio!" });
