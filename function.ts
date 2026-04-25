@@ -330,3 +330,20 @@ function updateMyUser(id: string, changes: UpdatePayload) {
 }
 
 updateMyUser("123", { bio: "Updated my bio!" });
+
+
+enum UserRole {
+    ADMIN = "ADMIN",
+    EDITOR = "EDITOR",
+    GUEST = "GUEST"
+}
+
+interface User {
+    username: string;
+    role: UserRole; // Now only the 3 options above are allowed
+}
+
+const myUser: User = {
+    username: "sarthak",
+    role: UserRole.ADMIN // Safe and no typos!
+};
