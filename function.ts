@@ -347,3 +347,48 @@ const myUser: User = {
     username: "sarthak",
     role: UserRole.ADMIN // Safe and no typos!
 };
+
+// 1. Enum for fixed choices
+enum ApiStatus {
+    SUCCESS = "success",
+    ERROR = "error",
+    LOADING = "loading"
+}
+
+// 2. Base Interface (The "Rulebook")
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    category: string;
+}
+
+// 3. Utility Type: Partial (For Updates)
+// This makes all Product fields optional so we can update just the price
+type ProductUpdateDto = Partial<Product>;
+
+// 4. Generic Interface (The "Universal Wrapper")
+// T can be anything (a User, a Product, or an Array)
+interface ApiResponse<T> {
+    status: ApiStatus;
+    data: T;
+    message: string;
+}
+
+// 5. The Function
+function updateProduct(id: number, changes: ProductUpdateDto): ApiResponse<ProductUpdateDto> {
+    // Logic would go here (e.g., Database update)
+    console.log(`Updating product ${id} with changes:`, changes);
+
+    return {
+        status: ApiStatus.SUCCESS,
+        data: changes,
+        message: "Product updated successfully!"
+    };
+}
+
+// --- TESTING THE CODE ---
+const myChanges: ProductUpdateDto = { price: 999 }; // Only updating price
+const result = updateProduct(101, myChanges);
+
+console.log(result);
