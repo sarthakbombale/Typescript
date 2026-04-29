@@ -392,3 +392,9 @@ const myChanges: ProductUpdateDto = { price: 999 }; // Only updating price
 const result = updateProduct(101, myChanges);
 
 console.log(result);
+
+function reverseString(text: string): string {
+    return text.split("").reverse().join("");
+}
+
+console.log(reverseString("Sarthak")); 
