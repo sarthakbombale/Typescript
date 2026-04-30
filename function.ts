@@ -398,3 +398,34 @@ function reverseString(text: string): string {
 }
 
 console.log(reverseString("Sarthak")); 
+
+
+
+
+function isPalindrome(word: string): boolean {
+
+    const reversed = word.split("").reverse().join("");
+
+    return word.toLowerCase() === reversed.toLowerCase();
+
+}
+
+
+
+console.log(isPalindrome("Racecar")); // true
+
+console.log(isPalindrome("Hello"));   // false
+
+function printChars(text: string): void {
+
+    for (const char of text) {
+
+        console.log(`Character: ${char}`);
+
+    }
+
+}
+
+
+
+printChars("NestJS");
