@@ -82,3 +82,71 @@ function isStringpalindrome(str){
 }
 console.log(isStringpalindrome("bob"));
 console.log(isStringpalindrome("Arya"));
+
+
+
+ function isStringRev(str){
+     return str.split("").reverse().join("");
+ }
+ console.log(isStringRev("Bombale"));
+ 
+ function reveserseString(str){
+     let rev="";
+     for(let i = str.length -1;i >=0;i--){
+         rev += str[i];
+     }
+     return rev
+ }
+ console.log(reveserseString("Sarthak"))
+ 
+ let arr = [1,2,3,4,5,6];
+ let res=[];
+  res =arr.reverse();
+ console.log(res);
+ 
+ let arrr=[6, 5, 4, 3, 2, 1];
+ let ress= [];
+for(let i = arrr.length - 1;i>=0;i--){
+   ress.push(arrr[i]);
+}
+
+console.log(ress);
+
+function isStringPalindrome(str){
+    let rev = "";
+  rev =  str.split("").reverse().join("");
+    return rev === str;
+}
+console.log(isStringPalindrome("anna"))
+
+function isStringPalindrome(str){
+    let rev ="";
+    for(let i = str.length -1;i >=0;i--){
+        rev += str[i]
+    }
+    return rev === str;
+}
+console.log(isStringPalindrome("bob"))
+console.log(isStringPalindrome("tom"))
+
+function largest(nums){
+    return Math.max(...nums);
+}
+console.log(largest([1,22,33,66,4]));
+
+let nums = [12,13,14,15,];
+let max=nums[0];
+
+for(let i =1; i < nums.length; i++ ){
+    if(nums[i] > max){
+        max=nums[i]
+    }
+}
+
+console.log(max)
+
+
+let numbers=[1,2,344,555,66,8998];
+let findMax = [];
+findMax = Math.max(...numbers);
+console.log(findMax)
