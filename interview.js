@@ -224,3 +224,52 @@ function checkstringpalindrome(str){
 console.log(checkstringpalindrome("non"))
 console.log(checkstringpalindrome("hehe"))
 
+//04/05/2026
+function outer(){
+    let count = 0;
+    return function(){
+        count ++;
+        return count
+    }
+}
+let counter = outer();
+console.log(counter());
+
+function greet(name){
+    return function(){
+        console.log("hello "+ name) 
+    }
+}
+let sayhello = greet("sarthak");
+sayhello()
+
+function reverseString(str){
+    let reverse = "";
+    for(let i = str.length -1;i >= 0;i--){
+        reverse += str[i]
+    }
+    return reverse
+}
+console.log(reverseString("boB"))
+
+
+function createCounter(){
+    let count = 0;
+    return{
+    increment:function(){
+        count++;
+        console.log(count);
+    },
+    decrement:function(){
+        count--;
+        console.log(count);
+    }
+    
+}
+}
+
+let countingStart = createCounter();
+
+countingStart.increment();
+countingStart.increment();
+countingStart.decrement();
