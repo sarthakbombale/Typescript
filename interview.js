@@ -273,3 +273,83 @@ let countingStart = createCounter();
 countingStart.increment();
 countingStart.increment();
 countingStart.decrement();
+
+
+function outer(){
+    let count = 0;
+    return{ increment: function(){
+        count++;
+        console.log(count);
+    },
+    decrement: function(){
+        count--;
+        console.log(count);
+    }
+    }
+}
+let counter = outer();
+counter.increment();
+counter.increment();
+counter.decrement();
+
+function greet(name){
+    console.log("hello " + name);
+}
+greet("sarthak");
+
+function isStringpalindrome(str){
+    let rev = "";
+    rev = str.split("").reverse().join("");
+    return rev === str;
+}
+console.log(isStringpalindrome("mom"))
+console.log(isStringpalindrome("Mom"))//cause its capital;
+
+function isStrPalidrome(str){
+    let rev = "";
+    for(let i = str.length -1;i >=0;i--){
+        rev += str[i];
+    }
+    return rev === str;
+}
+console.log(isStrPalidrome("Mom"));
+console.log(isStrPalidrome("non"));
+
+console.log(x);
+var x =10;
+
+let str = "sarthak";
+let reverse = "";
+for(let i = str.length -1; i>=0;i--){
+    reverse += str[i];
+}
+console.log(reverse);
+
+reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+let arr = [1,2,3,4,5,6];
+let rev = [];
+// rev = [...arr].reverse();
+// console.log(rev)
+for(let i = arr.length -1 ; i >= 0; i--){
+    rev.push(arr[i]);
+}
+console.log(rev)
+
+function prints(){
+    for(let i= 0; i<3;i++){
+        console.log(3)
+    }
+}
+prints()
+
+let add = (a,b) =>{
+    return a+b;
+}
+console.log(add(2,2));
+
+let multiply = (a,b)=>{
+    return a*b;
+}
+console.log(multiply(5,2))
