@@ -353,3 +353,22 @@ let multiply = (a,b)=>{
     return a*b;
 }
 console.log(multiply(5,2))
+
+
+//Leetcode reverse number problem;
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    if(x ===undefined || x===null) return false;
+let str = x.toString()
+let reversed = "";
+for(let i =str.length-1;i >=0;i--){
+    reversed += str[i]
+}
+return reversed ===str;
+    };
+
+console.log(isPalindrome(121));  // Output: true
+console.log(isPalindrome(-121)); // Output: false
