@@ -372,3 +372,66 @@ return reversed ===str;
 
 console.log(isPalindrome(121));  // Output: true
 console.log(isPalindrome(-121)); // Output: false
+
+function print1to3(){
+    for(let i =1; i <=3;i++){
+        console.log(3)
+    }
+}
+
+print1to3();
+
+function revserseStr(str){
+    let reverse ="";
+    for(let i = str.length -1;i >= 0;i--){
+        reverse += str[i];
+    }
+    return reverse;
+}
+console.log(revserseStr("kahtraS"));
+
+let str = "kahtraS elabmoB";
+let reverse = "";
+reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+let arr= [1,2,3,4,5,6,7];
+let rev = [];
+rev = [...arr].reverse();
+console.log(rev);
+
+let Arrayy = [9,8,7,6,5,4,3,2,1];
+let reversed = [];
+for(let i = Arrayy.length -1; i >= 0;i--){
+    reversed.push(Arrayy[i]);
+}
+
+
+console.log(reversed);
+
+function greet(name){
+    return function(){
+        console.log("Hello "+ name);
+    }
+}
+let sayhello = greet("Sarthak");
+
+sayhello();
+
+function largest(arr){
+    return Math.max(...arr);
+}
+console.log(largest([12,45,67,89]));
+
+function biggestNumber(arr){
+    let max = arr[0];
+    for(let i = 1; i < arr.length;i++){
+        arr[i] > max;
+        max = arr[i]
+    }
+    return max;
+}
+
+console.log(biggestNumber([12,45,56]));
+
+
