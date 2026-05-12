@@ -456,3 +456,53 @@ let b = 20;
 [a, b] = [b, a];
 
 console.log(a, b);
+
+
+//debouning in js code 
+function debounce(fn,dealy){
+    let timer;
+    return function(...args){
+    clearTimeout(timer);
+    timer = setTimeout(()=>{
+        fn(...args)
+    },dealy)
+    }
+}
+
+function searchdata(value){
+    console.log("Api Call:",value)
+};
+
+optimizedSeach = debounce(searchdata,2000);
+
+optimizedSeach("function is debounce after 2 seconds")
+
+import { useState } from "react"; 
+
+// 1. Fixed initialization syntax
+const [text, setText] = useState(""); 
+
+function debounce(fn, dealy) { 
+  let timer; 
+  return function(...args) { 
+    clearTimeout(timer); 
+    timer = setTimeout(() => { fn(...args); }, dealy); 
+  }; 
+} 
+
+// 2. Fixed function assignment syntax
+const handleSearch = debounce((value) => { 
+  console.log("Searching", value); 
+}, 4000);
+
+export default function App() {
+  return ( 
+    <input 
+      type="text" 
+      onChange={(e) => { 
+        setText(e.target.value); 
+        handleSearch(e.target.value); 
+      }}
+    /> 
+  ); 
+} 
