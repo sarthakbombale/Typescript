@@ -443,3 +443,9 @@ function missing(arr, n) {
 }
 
 console.log(missing([1,2,4,5], 5));
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+console.log(capitalize("hello"));
