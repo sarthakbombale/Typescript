@@ -506,3 +506,26 @@ export default function App() {
     /> 
   ); 
 } 
+
+
+function throttle(fn, delay) {
+  let lastCall = 0;
+
+  return function (...args) {
+    let now = new Date().getTime();
+
+    if (now - lastCall < delay) {
+      return;
+    }
+
+    lastCall = now;
+    fn(...args);
+  };
+}
+
+// Example
+function handleScroll() {
+  console.log("Scroll Event");
+}
+
+const optimizedScroll = throttle(handleScroll, 2000);
