@@ -529,3 +529,25 @@ function handleScroll() {
 }
 
 const optimizedScroll = throttle(handleScroll, 2000);
+
+// Check the prime numbers 
+function isPrime(num){
+    if(num <= 0) return false;
+    for(let i = 2; i < num ; i++){
+        if(num % 2 ===0) return false;
+    }
+    return true
+}
+console.log(isPrime(7));
+console.log(isPrime(2));
+console.log(isPrime(10))
+
+const arr = [4,6,9,5,3,1,7];
+
+arr.sort((a,b)=>a-b);
+console.log(arr)
+
+function countVowels(str){
+    return str.match(/[aeiou]/gi).length
+};
+console.log(countVowels('javascript'));
