@@ -551,3 +551,21 @@ function countVowels(str){
     return str.match(/[aeiou]/gi).length
 };
 console.log(countVowels('javascript'));
+
+const nums = [1,2,3];
+
+const sum = nums.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sum);
+
+const nums = [1,2,3,4];
+
+const result = nums.filter((x) => x > 2);
+
+console.log(result);
+
+const arr = [1, 2, 3];
+
+const result = arr.map((x) => x * 2);
+
+console.log(result);
