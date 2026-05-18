@@ -432,3 +432,32 @@ printChars("NestJS");
 
 
 
+// 1. Define the user interface
+interface User {
+  id: number;
+  name: string;
+  role: 'admin' | 'user' | 'guest';
+  status: 'active' | 'inactive';
+}
+
+// 2. Complete this generic class
+class ApiResponseProcessor<T> {
+  private data: T[];
+
+  constructor(data: T[]) {
+    this.data = data;
+  }
+
+
+  
+  filterByProperty<K extends keyof T>(key: K, value: T[K]): T[] {
+    return this.data.filter(item => item[key] === value);
+  }
+
+
+  pluck<K extends keyof T>(key: K): T[K][] {
+    return this.data.map(item => item[key]);
+  }
+}
+
+  
