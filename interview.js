@@ -569,3 +569,45 @@ const arr = [1, 2, 3];
 const result = arr.map((x) => x * 2);
 
 console.log(result);
+
+
+function reverseString(str){
+    let reverse = "";
+    for(let i = str.length -1;i >=0;i--){
+        reverse +=str[i];
+    }
+    return reverse;
+}
+console.log(reverseString("Sarthak"));
+
+function revStr(str){
+    return str.split("").reverse().join("");
+}
+
+console.log(revStr("Bombale"));
+
+function createCounter(){
+    let count = 0;
+    return {
+        increment: function(){
+            count++;
+            return count;
+        },
+        decrement: function(){
+            count--
+            return count
+        }
+    }
+}
+
+const counter = createCounter();
+
+console.log(counter.increment());
+console.log(counter.decrement());
+
+function printName(name){
+    return console.log("Hello " + name)
+}
+let sayHello = printName;
+
+sayHello("Sarthak")
