@@ -611,3 +611,64 @@ function printName(name){
 let sayHello = printName;
 
 sayHello("Sarthak")
+
+function revStr(str){
+    let rev = "";
+    for(let i =str.length -1; i>=0;i--){
+        rev += str[i];
+    }
+    return rev;
+}
+console.log(revStr("Sarthak"));
+
+function revStr(str){
+    return str.split("").reverse().join("");
+}
+console.log(revStr("Bombale"));
+
+function createCounter(){
+    let count= 0;
+    return{
+        increment: function(){
+            count++
+            return count
+        },
+        decrement: function(){
+            count--
+            return count
+        }
+    }
+}
+
+const counter = createCounter();
+
+console.log(counter.increment());
+console.log(counter.increment());
+console.log(counter.decrement());
+
+function debounce(fn,delay){
+    let timer;
+    return function(...args){
+        clerTimeout(timer)
+        timer = setTimeout(()=>{
+            fn(...args)
+        },delay)
+    }
+}
+
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+console.log(capitalize("hello"));
+
+function greet(name, callback) {
+  console.log("Hello " + name);
+
+  callback();
+}
+
+greet("John", function() {
+  console.log("Callback executed");
+});
