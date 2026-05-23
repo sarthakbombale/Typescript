@@ -672,3 +672,31 @@ function greet(name, callback) {
 greet("John", function() {
   console.log("Callback executed");
 });
+
+
+function isStringPalindrome(str){
+    let rev = "";
+    for(let i = str.length - 1; i >= 0;i--){
+        rev += str[i]
+    }
+    return rev === str 
+}
+console.log(isStringPalindrome("madam"));
+console.log(isStringPalindrome("its not palindrome return false"));
+
+function largest(arr){
+ let max = arr[0];
+ for(let i = 1; i < arr.length; i++){
+     if(arr[i] > max){
+         max = arr[i]
+     }
+ }
+ return max
+}
+
+console.log(largest([12,3,45,67]));
+
+function largest(arr){
+    return Math.max(...arr)
+}
+console.log(largest([100,3,4,5,6,89,9]))
