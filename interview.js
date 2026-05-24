@@ -700,3 +700,90 @@ function largest(arr){
     return Math.max(...arr)
 }
 console.log(largest([100,3,4,5,6,89,9]))
+
+
+
+function reverseString(str){
+    let reverse = "";
+    for(let i = str.length -1; i >= 0;i--){
+        reverse += str[i];
+    }
+    return reverse;
+}
+
+console.log(reverseString("abcd"));
+
+function rereseStr(str){
+    return str.split("").reverse().join("")
+};
+
+console.log(rereseStr("ABCD"));
+
+
+function isStringPalindrome(str){
+    let rev = "";
+    for(let i = str.length -1 ;i >= 0;i--){
+        rev += str[i]
+    }
+    return rev === str
+}
+console.log(isStringPalindrome("mom"));
+console.log(isStringPalindrome("hello"));
+
+function printTo(max){
+    for(let i = 5; i <= 5;i++){
+        console.log(i)
+    }
+}
+printTo();
+
+function repeat(times){
+    for(let i = 1; i <= times;i++){
+        console.log(i)
+    }
+}
+repeat(3);
+
+function repeatThree(times){
+    for(let i = 1; i <= times;i++){
+        console.log(3)
+    }
+}
+repeatThree(3);
+
+function printPattern(lines){
+    for(let i = 1; i <= lines;i++){
+        let rows ="";
+        for(let j = 1;j <=i;j++){
+            rows += j
+        }
+        console.log(rows)
+    }
+}
+printPattern(5);
+
+function starRightPattern(lines){
+    for(let i = 1; i <= lines;i++){
+        let rows ="";
+        for(let j =1; j <= i;j++){
+            rows += "*"
+        }
+         console.log(rows)
+    }
+}
+starRightPattern(5);
+
+function starLeftPattern(lines){
+    for(let i = 1; i <= lines;i++){
+        let rows ="";
+        for(let k = 1; k <= lines - i;k++){
+            rows += " ";
+        }
+            for(let j = 1; j <= i; j++){
+                rows += "*"
+            }
+            console.log(rows)
+    }
+}
+
+starLeftPattern(5)
