@@ -797,3 +797,80 @@ for(let i = 1; i <= n; i++) {
     row += "* ".repeat(i * 2 - 1);   
     console.log(row);
 }
+
+
+Array.prototype.myReduce = function (callback, initialValue) {
+  // 'this' points to the array calling myReduce
+  const array = this; 
+  
+  // Determine if initialValue was passed, and set starting index/accumulator
+  let hasInitialValue = arguments.length > 1;
+  let accumulator = hasInitialValue ? initialValue : array[0];
+  let startIndex = hasInitialValue ? 0 : 1;
+
+  for (let i = startIndex; i < array.length; i++) {
+    // Handle sparse arrays (empty slots)
+    if (i in array) {
+      accumulator = callback(accumulator, array[i], i, array);
+    }
+  }
+
+  return accumulator;
+};
+
+// --- Test Case ---
+const numbers = [1, 2, 3, 4];
+const sum = numbers.myReduce((acc, curr) => acc + curr, 0); 
+console.log(sum); // Output: 10
+function debounce(func, delay) {
+  let timerId;
+
+  return function (...args) {
+    // Preserve the execution context (this)
+    const context = this;
+
+    // Clear the previous timer if the function is called again before the delay ends
+    clearTimeout(timerId);
+
+    // Set a new timer
+    timerId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
+// --- Test Case ---
+const logMessage = (msg) => console.log(`Search query: ${msg}`);
+const debouncedLog = debounce(logMessage, 300);
+
+// Simulating rapid typing
+debouncedLog("a");
+debouncedLog("ab");
+debouncedLog("abc"); // Only this final call executes after 300ms
+
+function flattenArray(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      // Recursively flatten the inner array and merge it
+      result = result.concat(flattenArray(arr[i]));
+    } else {
+      // Push the primitive value
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
+}
+
+// Alternative modern approach using reduce:
+const flattenWithReduce = (arr) => {
+  return arr.reduce((acc, item) => {
+    return acc.concat(Array.isArray(item) ? flattenWithReduce(item) : item);
+  }, []);
+};
+
+// --- Test Case ---
+const nested = [1, [2, [3, 4], 5], 6];
+console.log(flattenArray(nested)); // Output: [1, 2, 3, 4, 5, 6]
