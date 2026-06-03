@@ -874,3 +874,44 @@ const flattenWithReduce = (arr) => {
 // --- Test Case ---
 const nested = [1, [2, [3, 4], 5], 6];
 console.log(flattenArray(nested)); // Output: [1, 2, 3, 4, 5, 6]
+
+
+function isStringPalindrome(str){
+    let pal = "";
+    for(let i = str.length -1; i >= 0;i--){
+        pal += str[i];
+    }
+    return pal === str
+}
+
+console.log(isStringPalindrome("mom"))
+console.log(isStringPalindrome("naman"))
+
+function reverseString(str){
+    let reverse = "";
+    for(let i = str.length - 1;i >= 0; i--){
+        reverse += str[i]
+    }
+    return reverse
+}
+
+console.log(reverseString("kahtraS"));
+
+function revStr(str){
+    return str.split("").reverse().join("");
+}
+console.log(revStr("elabmoB"));
+
+function isPrime(num){
+    if(num <= 1) return false;
+    for(let i = 2; i < num;i++){
+        if(num % i === 0) return false
+    }
+    return true
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(4));
+
+
