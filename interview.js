@@ -915,3 +915,70 @@ console.log(isPrime(2));
 console.log(isPrime(4));
 
 
+function reverseString(str){
+    let rev = "";
+    for(let i = str.length - 1; i >= 0;i--){
+        rev += str[i]
+    }
+    return rev
+}
+
+console.log(reverseString("woeM"));
+
+let str = "UJAR";
+let reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+function isStrPalindrome(str){
+    let pal = "";
+    for(let i = str.length -1 ; i >= 0;i--){
+        pal += str[i]
+    }
+    return pal === str;
+}
+console.log(isStrPalindrome("mom"));
+console.log(isStrPalindrome("Tom"));
+
+let strr = "naman";
+let reve = ""
+for(let i = strr.length -1; i >=0;i-- ){
+    reve += strr[i];
+}
+console.log(reve === strr);
+
+
+function debounce(fn,delay){
+    let timer;
+    return function(){
+        clearTimeout(timer);
+        setTimeout(()=>{
+            fn();
+        },delay)
+    }
+}
+
+function CreateCounter(){
+    let count = 0;
+    return  {
+        increment:function(){
+            count++
+            return count;
+        },
+        decrement:function(){
+            count--
+            return count;
+        }
+    }
+}
+let counter = CreateCounter();
+
+console.log(counter.increment())
+console.log(counter.increment())
+console.log(counter.decrement())
+
+const arr1 = [1,2];
+const arr2 = [3,4];
+const merged = [...arr1,...arr2] ;
+console.log(merged);
+
+
