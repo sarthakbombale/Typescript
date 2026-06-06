@@ -461,3 +461,22 @@ class ApiResponseProcessor<T> {
 }
 
   
+
+interface User {
+    id: number;
+    name: string;
+}
+
+// Custom Type Guard function
+function isUser(data: any): data is User {
+    return data && typeof data.id === "number" && typeof data.name === "string";
+}
+
+// Usage in API handler
+function handleResponse(response: unknown) {
+    if (isUser(response)) {
+        console.log("Welcome,", response.name.toUpperCase()); // Safe to use!
+    } else {
+        console.error("Invalid user data structure");
+    }
+}

@@ -982,3 +982,17 @@ const merged = [...arr1,...arr2] ;
 console.log(merged);
 
 
+function greet(name,callback){
+    console.log("Hellow "+ name)
+    callback();
+}
+
+greet("Sarthak",function(){
+    console.log('Callback Execuated')
+})
+
+const promise = new Promise((resolve, reject) => {
+  resolve("Success");
+});
+
+promise.then(res => console.log(res));
