@@ -1085,3 +1085,12 @@ function twoSum(nums, target) {
 
 console.log(twoSum([2, 7, 11, 15], 9));
 
+function revStr(str){
+    let reverse ="";
+    for(let i = str.length -1; i >= 0;i--){
+        reverse += str[i]
+    }
+    return reverse;
+}
+console.log(revStr("hsaY"))
+
