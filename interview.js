@@ -1094,3 +1094,123 @@ function revStr(str){
 }
 console.log(revStr("hsaY"))
 
+
+function revStr(str) {
+    return str.split("").reverse().join("");
+}
+console.log(revStr("elabmoB"));
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false
+    }
+    return true
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(4));
+
+
+function reverseString(str) {
+    let rev = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        rev += str[i]
+    }
+    return rev
+}
+
+console.log(reverseString("woeM"));
+
+let str = "UJAR";
+let reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+function isStrPalindrome(str) {
+    let pal = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        pal += str[i]
+    }
+    return pal === str;
+}
+console.log(isStrPalindrome("mom"));
+console.log(isStrPalindrome("Tom"));
+
+let strr = "naman";
+let reve = ""
+for (let i = strr.length - 1; i >= 0; i--) {
+    reve += strr[i];
+}
+console.log(reve === strr);
+
+
+function debounce(fn, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        setTimeout(() => {
+            fn();
+        }, delay)
+    }
+}
+
+function revStr(str) {
+    return str.split("").reverse().join("");
+}
+console.log(revStr("elabmoB"));
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false
+    }
+    return true
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(4));
+
+
+function reverseString(str) {
+    let rev = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        rev += str[i]
+    }
+    return rev
+}
+
+console.log(reverseString("woeM"));
+
+let str = "UJAR";
+let reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+function isStrPalindrome(str) {
+    let pal = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        pal += str[i]
+    }
+    return pal === str;
+}
+console.log(isStrPalindrome("mom"));
+console.log(isStrPalindrome("Tom"));
+
+let strr = "naman";
+let reve = ""
+for (let i = strr.length - 1; i >= 0; i--) {
+    reve += strr[i];
+}
+console.log(reve === strr);
+
+
+function debounce(fn, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        setTimeout(() => {
+            fn();
+        }, delay)
+    }
+}
