@@ -1214,3 +1214,26 @@ function debounce(fn, delay) {
         }, delay)
     }
 }
+
+function missing(arr, n) {
+  let total = (n * (n + 1)) / 2;
+  let sum = arr.reduce((a,b) => a + b, 0);
+
+  return total - sum;
+}
+
+console.log(missing([1,2,4,5], 5));
+
+
+
+function frequency(arr) {
+  let count = {};
+
+  arr.forEach(item => {
+    count[item] = (count[item] || 0) + 1;
+  });
+
+  return count;
+}
+
+console.log(frequency([1,1,2,3,2]));
