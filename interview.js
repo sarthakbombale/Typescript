@@ -1237,3 +1237,68 @@ function frequency(arr) {
 }
 
 console.log(frequency([1,1,2,3,2]));
+function flattenArray(arr) {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            // Recursively flatten the nested array and merge it
+            result = result.concat(flattenArray(arr[i]));
+        } else {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+
+console.log(flattenArray([1, [2, [3, 4], 5], 6]));
+
+
+function twoSum(nums, target) {
+    const map = new Map(); // Stores: Map(value => index)
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+
+
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+
+
+        map.set(nums[i], i);
+    }
+
+    return [];
+}
+
+
+console.log(twoSum([2, 7, 11, 15], 9));
+
+function revStr(str){
+    let reverse ="";
+    for(let i = str.length -1; i >= 0;i--){
+        reverse += str[i]
+    }
+    return reverse;
+}
+console.log(revStr("hsaY"))
+
+
+function revStr(str) {
+    return str.split("").reverse().join("");
+}
+console.log(revStr("elabmoB"));
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false
+    }
+    return true
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(4));
