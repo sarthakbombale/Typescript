@@ -1303,7 +1303,7 @@ console.log(isPrime(1));
 console.log(isPrime(2));
 console.log(isPrime(4));
 
-et arr = [1, 2, 3, 4, 5]
+let arr = [1, 2, 3, 4, 5]
 let rev = [];
 for (let i = arr.length - 1; i >= 0; i--) {
     rev += arr[i]
@@ -1384,3 +1384,82 @@ function isStringpalindrome(str) {
 }
 console.log(isStringpalindrome("bob"));
 console.log(isStringpalindrome("Arya"));
+
+
+function createCounter() {
+  let count = 0; // Private variable
+  
+  return {
+    increment() {
+      count++;
+    },
+    getValue() {
+      return count;
+    }
+  };
+}
+
+// Usage
+const counter = createCounter();
+counter.increment();
+console.log(counter.getValue()); 
+console.log(counter.count); 
+
+function debounce(func, delay) {
+  let timerId;
+  
+  return function (...args) {
+    // Clear the previous timer if the function is called again quickly
+    clearTimeout(timerId);
+    
+    // Set a new timer
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+// Usage
+const handleSearch = debounce((query) => console.log(query), 300);
+
+function flatten(arr) {
+  return arr.reduce((acc, val) => {
+    // If the element is an array, recursively flatten it
+    return acc.concat(Array.isArray(val) ? flatten(val) : val);
+  }, []);
+}
+
+// Usage
+console.log(flatten([1, [2, [3, 4], 5], 6])); // [1, 2, 3, 4, 5, 6]
+
+function deepClone(obj) {
+  // Handle primitives and null
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+  
+  // Handle Arrays
+  if (Array.isArray(obj)) {
+    return obj.map(item => deepClone(item));
+  }
+  
+  // Handle Objects
+  const clonedObj = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      clonedObj[key] = deepClone(obj[key]);
+    }
+  }
+  return clonedObj;
+}
+
+// Usage
+const original = { a: 1, b: { c: 2 } };
+const clone = deepClone(original);
+clone.b.c = 99;
+console.log(original.b.c); // 2 (Original is unaffected)
+
+const removeDuplicates = (arr) => [...new Set(arr)];
+
+// Usage
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 1])); // [1, 2, 3, 4]
