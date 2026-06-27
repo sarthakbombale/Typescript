@@ -480,3 +480,57 @@ function handleResponse(response: unknown) {
         console.error("Invalid user data structure");
     }
 }
+
+function updateProduct(id: number, changes: ProductUpdateDto): ApiResponse<ProductUpdateDto> {
+    // Logic would go here (e.g., Database update)
+    console.log(`Updating product ${id} with changes:`, changes);
+
+    return {
+        status: ApiStatus.SUCCESS,
+        data: changes,
+        message: "Product updated successfully!"
+    };
+}
+
+// --- TESTING THE CODE ---
+const myChanges: ProductUpdateDto = { price: 999 }; // Only updating price
+const result = updateProduct(101, myChanges);
+
+console.log(result);
+
+function reverseString(text: string): string {
+    return text.split("").reverse().join("");
+}
+
+console.log(reverseString("Sarthak")); 
+
+
+
+
+function isPalindrome(word: string): boolean {
+
+    const reversed = word.split("").reverse().join("");
+
+    return word.toLowerCase() === reversed.toLowerCase();
+
+}
+
+
+
+console.log(isPalindrome("Racecar")); // true
+
+console.log(isPalindrome("Hello"));   // false
+
+function printChars(text: string): void {
+
+    for (const char of text) {
+
+        console.log(`Character: ${char}`);
+
+    }
+
+}
+
+
+
+printChars("NestJS");
