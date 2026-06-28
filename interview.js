@@ -1800,3 +1800,10 @@ for (let i = 1; i <= 5; i++) {
         break;
     }
 }
+
+let nums = [10, 20, 30];
+let revNums = [];
+for (let i = nums.length - 1; i >= 0; i--) {
+    revNums.push(nums[i]);
+}
+console.log(revNums)
