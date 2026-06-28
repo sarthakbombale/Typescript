@@ -1560,3 +1560,243 @@ function reveserseString(str) {
     return rev
 }
 console.log(reveserseString("Sarthak"))
+
+
+function flattenArray(arr) {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            // Recursively flatten the nested array and merge it
+            result = result.concat(flattenArray(arr[i]));
+        } else {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+
+console.log(flattenArray([1, [2, [3, 4], 5], 6]));
+
+
+function twoSum(nums, target) {
+    const map = new Map(); // Stores: Map(value => index)
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+
+
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+
+
+        map.set(nums[i], i);
+    }
+
+    return [];
+}
+
+
+console.log(twoSum([2, 7, 11, 15], 9));
+
+function revStr(str){
+    let reverse ="";
+    for(let i = str.length -1; i >= 0;i--){
+        reverse += str[i]
+    }
+    return reverse;
+}
+console.log(revStr("hsaY"))
+
+
+function revStr(str) {
+    return str.split("").reverse().join("");
+}
+console.log(revStr("elabmoB"));
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false
+    }
+    return true
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(4));
+
+
+function reverseString(str) {
+    let rev = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        rev += str[i]
+    }
+    return rev
+}
+
+console.log(reverseString("woeM"));
+
+let str = "UJAR";
+let reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+function isStrPalindrome(str) {
+    let pal = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        pal += str[i]
+    }
+    return pal === str;
+}
+console.log(isStrPalindrome("mom"));
+console.log(isStrPalindrome("Tom"));
+
+let strr = "naman";
+let reve = ""
+for (let i = strr.length - 1; i >= 0; i--) {
+    reve += strr[i];
+}
+console.log(reve === strr);
+
+
+function debounce(fn, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        setTimeout(() => {
+            fn();
+        }, delay)
+    }
+}
+
+function revStr(str) {
+    return str.split("").reverse().join("");
+}
+console.log(revStr("elabmoB"));
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false
+    }
+    return true
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(4));
+
+
+function reverseString(str) {
+    let rev = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        rev += str[i]
+    }
+    return rev
+}
+
+console.log(reverseString("woeM"));
+
+let str = "UJAR";
+let reverse = str.split("").reverse().join("");
+console.log(reverse);
+
+function isStrPalindrome(str) {
+    let pal = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        pal += str[i]
+    }
+    return pal === str;
+}
+console.log(isStrPalindrome("mom"));
+console.log(isStrPalindrome("Tom"));
+
+let strr = "naman";
+let reve = ""
+for (let i = strr.length - 1; i >= 0; i--) {
+    reve += strr[i];
+}
+console.log(reve === strr);
+
+
+function debounce(fn, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        setTimeout(() => {
+            fn();
+        }, delay)
+    }
+}
+
+function missing(arr, n) {
+  let total = (n * (n + 1)) / 2;
+  let sum = arr.reduce((a,b) => a + b, 0);
+
+  return total - sum;
+}
+
+console.log(missing([1,2,4,5], 5));
+
+let arr = [1, 2, 3, 4, 5]
+let rev = [];
+for (let i = arr.length - 1; i >= 0; i--) {
+    rev += arr[i]
+}
+console.log()
+
+let nums = [10, 20, 30];
+let revNums = [];
+for (let i = nums.length - 1; i >= 0; i--) {
+    revNums.push(nums[i]);
+}
+console.log(revNums);
+let nums = [10, 20, 30];
+let revNums = [];
+for (let i = nums.length - 1; i >= 0; i--) {
+    revNums.push(nums[i]);
+}
+console.log(revNums);
+
+//date 02-07-2024
+
+function reversestring(str) {
+    let res = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        res += str[i]
+    }
+    return res
+}
+console.log(reversestring("kahtraS"))
+
+let str = "elabmoB";
+let reverse = "";
+for (let i = str.length - 1; i >= 0; i--) {
+    reverse += str[i];
+}
+console.log(reverse);
+
+let arr = [1, 2, 3, 4, 5, 6];
+let res = [];
+res = arr.reverse();
+console.log(res)
+
+for (let i = arr.length - 1; i >= 0; i--) {
+    res.push(arr[i])
+}
+console.log(res)
+
+//print 1 to 5
+
+for (let i = 1; i <= 5; i++) {
+    console.log(i)
+}
+
+for (let i = 1; i <= 5; i++) {
+    if (i === 5) {
+        console.log(`function for only printing ${i}`);
+        break;
+    }
+}
