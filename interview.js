@@ -1807,3 +1807,70 @@ for (let i = nums.length - 1; i >= 0; i--) {
     revNums.push(nums[i]);
 }
 console.log(revNums)
+
+let arr =;
+for (let i = 0; i < Math.floor(arr.length / 2); i++) {
+    let temp = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = temp;
+}
+console.log(arr);
+
+let items = ["apple", "banana", "cherry"];
+for (let item of items) {
+    console.log(item);
+}
+
+let values =;
+for (let i = 0; i < values.length; i += 2) {
+    console.log(values[i]);
+}
+
+let mixNums =;
+let sum = 0;
+for (let i = 0; i < mixNums.length; i++) {
+    if (mixNums[i] > 10) {
+        sum += mixNums[i];
+    }
+}
+console.log(sum);
+
+let dataset =;
+let divisibleByThree = dataset.filter(num => num % 3 === 0);
+console.log(divisibleByThree);
+
+let stock = ["apple", "banana", "apple", "orange", "banana", "apple"];
+let appleCount = 0;
+for (let i = 0; i < stock.length; i++) {
+    if (stock[i] === "apple") {
+        appleCount++;
+    }
+}
+console.log(appleCount);
+
+let word = "radar";
+let isPalindrome = true;
+for (let i = 0; i < Math.floor(word.length / 2); i++) {
+    if (word[i] !== word[word.length - 1 - i]) {
+        isPalindrome = false;
+        break;
+    }
+}
+console.log(isPalindrome);
+
+let sentence = "hello world";
+let vowels = "aeiouAEIOU";
+let stripped = "";
+for (let i = 0; i < sentence.length; i++) {
+    if (!vowels.includes(sentence[i])) {
+        stripped += sentence[i];
+    }
+}
+console.log(stripped);
+
+let text = "hello learning javascript is fun";
+let words = text.split(" ");
+for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+}
+console.log(words.join(" "));
