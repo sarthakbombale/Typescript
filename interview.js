@@ -1901,3 +1901,50 @@ let sortedStudents = [...students].sort();
 for (let student of sortedStudents) {
     console.log(`Student: ${student}`);
 }
+
+function checkPrimeNumber(num){
+    if(num <= 1)return false;
+    if(num === 2)return true;
+    for(let i = 2; i <= Math.sqrt(num);i++){
+        if(num % 2 === 0) {
+            return false
+        }
+    }
+    return true
+}
+console.log(checkPrimeNumber(3))
+console.log(checkPrimeNumber(1))
+console.log(checkPrimeNumber(2))
+console.log(checkPrimeNumber(99))
+console.log(checkPrimeNumber(102))
+
+function isStrPalindrome(str){
+    let lowerStr = str.toLowerCase() 
+    let reverse = ""
+    for(let i = lowerStr.length -1; i >= 0;i--){
+        reverse += lowerStr[i]
+    }
+    
+    return lowerStr === reverse
+}
+
+console.log(isStrPalindrome("Mom")) 
+console.log(isStrPalindrome("mom"))
+console.log(isStrPalindrome("cow")) 
+
+
+for (var i = 1; i <= 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+// print 444 
+
+let user1 = { name: "Harry", skills: ["JS", "Python"] };
+let user2 = { ...user1 };
+
+user2.name = "Rohit";
+user2.skills.push("SQL");
+
+console.log(user1.name);   
+console.log(user1.skills); 
