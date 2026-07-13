@@ -1760,8 +1760,6 @@ for (let i = nums.length - 1; i >= 0; i--) {
 }
 console.log(revNums);
 
-//date 02-07-2024
-
 function reversestring(str) {
     let res = "";
     for (let i = str.length - 1; i >= 0; i--) {
@@ -1874,3 +1872,32 @@ for (let i = 0; i < words.length; i++) {
     words[i] = words[i][0].toUpperCase() + words[i].slice(1);
 }
 console.log(words.join(" "));
+let orders =;
+for (let order of orders) {
+    if (order === 0) {
+        continue;
+    }
+    console.log(`Shipping order worth $${order}`);
+}
+
+let products = ["Laptop", "Phone", "Tablet"];
+products.forEach((item, index) => {
+    console.log(`Item #${index + 1}: ${item}`);
+});
+
+let usernames = ["Harry", "Sarthak", "Rohit"];
+let scores =;
+for (let i = 0; i < usernames.length; i++) {
+    console.log(`${usernames[i]} achieved a score of ${scores[i]}`);
+}
+
+let notifications = ["Logged in", "Updated profile", "Logged out"];
+for (let i = notifications.length - 1; i >= 0; i--) {
+    console.log(`Log event: ${notifications[i]}`);
+}
+
+let students = ["Sarthak", "Rohit", "Harry"];
+let sortedStudents = [...students].sort();
+for (let student of sortedStudents) {
+    console.log(`Student: ${student}`);
+}
