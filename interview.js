@@ -1948,3 +1948,70 @@ user2.skills.push("SQL");
 
 console.log(user1.name);   
 console.log(user1.skills); 
+
+let text = "backend programming with node is awesome";
+let words = text.split(" ");
+for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+}
+console.log(words.join(" "));
+
+let prices =;
+for (let price of prices) {
+    if (price === 0) {
+        continue;
+    }
+    console.log(`Product price tag: $${price}`);
+}
+
+let roles = ["Admin", "Editor", "Viewer"];
+roles.forEach((item, index) => {
+    console.log(`Role #${index + 1}: ${item}`);
+});
+
+let keys = ["status", "code", "message"];
+let values = ["success", 200, "OK"];
+for (let i = 0; i < keys.length; i++) {
+    console.log(`Response ${keys[i]} is ${values[i]}`);
+}
+
+let items = ["item1", "item2", "item3"];
+for (let i = items.length - 1; i >= 0; i--) {
+    console.log(`Popping: ${items[i]}`);
+}
+
+let fruits = ["banana", "apple", "cherry"];
+let sortedFruits = [...fruits].sort();
+for (let fruit of sortedFruits) {
+    console.log(`Fruit: ${fruit}`);
+}
+
+function checkEvenNumber(num) {
+    if (num <= 0) return false;
+    if (num % 2 === 0) {
+        return true;
+    }
+    return false;
+}
+console.log(checkEvenNumber(4));
+console.log(checkEvenNumber(7));
+
+function isWordMatch(word, target) {
+    let lowerWord = word.toLowerCase();
+    let lowerTarget = target.toLowerCase();
+    return lowerWord === lowerTarget;
+}
+console.log(isWordMatch("Admin", "admin"));
+
+for (var count = 1; count <= 3; count++) {
+    setTimeout(() => {
+        console.log(count);
+    }, 500);
+}
+
+let originalCart = { id: 101, items: ["phone", "case"] };
+let clonedCart = { ...originalCart };
+clonedCart.id = 102;
+clonedCart.items.push("charger");
+console.log(originalCart.id);
+console.log(originalCart.items);
