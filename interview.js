@@ -2015,3 +2015,52 @@ clonedCart.id = 102;
 clonedCart.items.push("charger");
 console.log(originalCart.id);
 console.log(originalCart.items);
+function twoSum(nums, target) {
+    let map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        let complement = target - nums[i];
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+        map.set(nums[i], i);
+    }
+    return [];
+}
+console.log(twoSum([2, 7, 11, 15], 9));
+function groupAnagrams(words) {
+    let cache = {};
+    for (let word of words) {
+        let sortedWord = word.split("").sort().join("");
+        if (!cache[sortedWord]) {
+            cache[sortedWord] = [];
+        }
+        cache[sortedWord].push(word);
+    }
+    return Object.values(cache);
+}
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+function lengthOfLongestSubstring(s) {
+    let set = new Set();
+    let left = 0;
+    let maxSize = 0;
+    for (let right = 0; right < s.length; right++) {
+        while (set.has(s[right])) {
+            set.delete(s[left]);
+            left++;
+        }
+        set.add(s[right]);
+        maxSize = Math.max(maxSize, right - left + 1);
+    }
+    return maxSize;
+}
+console.log(lengthOfLongestSubstring("abcabcbb"));
+function findMissingNumber(nums) {
+    let n = nums.length + 1;
+    let expectedSum = (n * (n + 1)) / 2;
+    let actualSum = 0;
+    for (let num of nums) {
+        actualSum += num;
+    }
+    return expectedSum - actualSum;
+}
+console.log(findMissingNumber([1, 2, 4, 5, 6]));
