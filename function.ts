@@ -534,3 +534,80 @@ function printChars(text: string): void {
 
 
 printChars("NestJS");
+
+interface KeyValueMap {
+    [key: string]: number;
+}
+
+function twoSum(nums: number[], target: number): number[] {
+    const map = new Map<number, number>();
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (map.has(complement)) {
+            return [map.get(complement)!, i];
+        }
+        map.set(nums[i], i);
+    }
+    return [];
+}
+console.log(twoSum([2, 7, 11, 15], 9));
+
+
+function groupAnagrams(words: string[]): string[][] {
+    const cache: { [key: string]: string[] } = {};
+    for (const word of words) {
+        const sortedWord = word.split("").sort().join("");
+        if (!cache[sortedWord]) {
+            cache[sortedWord] = [];
+        }
+        cache[sortedWord].push(word);
+    }
+    return Object.values(cache);
+}
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+
+
+function lengthOfLongestSubstring(s: string): number {
+    const set = new Set<string>();
+    let left = 0;
+    let maxSize = 0;
+    for (let right = 0; right < s.length; right++) {
+        while (set.has(s[right])) {
+            set.delete(s[left]);
+            left++;
+        }
+        set.add(s[right]);
+        maxSize = Math.max(maxSize, right - left + 1);
+    }
+    return maxSize;
+}
+console.log(lengthOfLongestSubstring("abcabcbb"));
+
+
+type NestedArray<T> = Array<T | NestedArray<T>>;
+
+function flattenArray<T>(arr: NestedArray<T>): T[] {
+    let result: T[] = [];
+    for (const item of arr) {
+        if (Array.isArray(item)) {
+            result = result.concat(flattenArray(item));
+        } else {
+            result.push(item);
+        }
+    }
+    return result;
+}
+console.log(flattenArray([1, [2, [3, 4], 5], 6]));
+
+
+function findMissingNumber(nums: number[]): number {
+    const n = nums.length + 1;
+    const expectedSum = (n * (n + 1)) / 2;
+    let actualSum = 0;
+    for (const num of nums) {
+        actualSum += num;
+    }
+    return expectedSum - actualSum;
+}
+console.log(findMissingNumber([1, 2, 4, 5, 6]));
+
