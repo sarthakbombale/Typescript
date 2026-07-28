@@ -519,6 +519,286 @@ function isPalindrome(word: string): boolean {
 
 console.log(isPalindrome("Racecar")); // true
 
+function greetUser(username: string, role: string = "guest"): string {
+    return `User ${username} logged in with role: ${role}`;
+}
+console.log(greetUser("Sarthak", "admin"));
+console.log(greetUser("Harry"));
+
+
+function formatInvoice(amount: number, currency: string = "INR"): string {
+    return `${currency} ${amount.toFixed(2)}`;
+}
+console.log(formatInvoice(1500));
+console.log(formatInvoice(49.99, "USD"));
+
+
+function processPayment(userId: string | number, amount: number): boolean {
+    if (amount <= 0) {
+        return false;
+    }
+    return true;
+}
+console.log(processPayment("usr_101", 250));
+console.log(processPayment(404, -10));
+
+
+type Callback = (id: string) => void;
+
+function fetchUserData(userId: string, onSuccess: Callback): void {
+    onSuccess(userId);
+}
+fetchUserData("1024", (id) => console.log(`Data synced for ID: ${id}`));
+
+
+function calculateTotal(...prices: number[]): number {
+    return prices.reduce((sum, current) => sum + current, 0);
+}
+console.log(calculateTotal(10, 20, 30, 40));
+console.log(calculateTotal(99, 1));
+
+interface DatabaseUser {
+    id: string;
+    email: string;
+    role: "admin" | "manager" | "employee";
+    isActive: boolean;
+}
+
+interface AuditLog {
+    timestamp: string;
+    actorId: string;
+    action: string;
+    status: "success" | "failed";
+}
+
+function processUserAccessControl(
+    user: DatabaseUser, 
+    requiredRoles: string[], 
+    systemLogs: AuditLog[]
+): { authorized: boolean; logEntry: AuditLog } {
+    const timestamp = new Date().toISOString();
+    
+    if (!user.isActive) {
+        const failedLog: AuditLog = { timestamp, actorId: user.id, action: "LOGIN_ATTEMPT", status: "failed" };
+        systemLogs.push(failedLog);
+        return { authorized: false, logEntry: failedLog };
+    }
+
+    const hasRole = requiredRoles.includes(user.role);
+    const status = hasRole ? "success" : "failed";
+    const logEntry: AuditLog = { timestamp, actorId: user.id, action: "ACCESS_DASHBOARD", status };
+    
+    systemLogs.push(logEntry);
+    return { authorized: hasRole, logEntry };
+}
+
+
+interface InventoryItem {
+    sku: string;
+    price: number;
+    quantity: number;
+    category: string;
+}
+
+interface CartItem {
+    sku: string;
+    qtyOrdered: number;
+}
+
+interface InvoiceSummary {
+    subtotal: number;
+    tax: number;
+    discount: number;
+    total: number;
+    errors: string[];
+}
+
+function generateOrderInvoice(
+    cart: CartItem[], 
+    inventory: Map<string, InventoryItem>, 
+    taxRate: number, 
+    couponCode?: string
+): InvoiceSummary {
+    let subtotal = 0;
+    const errors: string[] = [];
+
+    for (const item of cart) {
+        const invItem = inventory.get(item.sku);
+        if (!invItem) {
+            errors.push(`SKU ${item.sku} not found in inventory.`);
+            continue;
+        }
+        if (invItem.quantity < item.qtyOrdered) {
+            errors.push(`Insufficient stock for SKU ${item.sku}. Available: ${invItem.quantity}`);
+            continue;
+        }
+        subtotal += invItem.price * item.qtyOrdered;
+    }
+
+    let discount = 0;
+    if (couponCode === "SAVE20" && subtotal > 100) {
+        discount = subtotal * 0.20;
+    }
+
+    const taxableAmount = subtotal - discount;
+    const tax = taxableAmount * (taxRate / 100);
+    const total = taxableAmount + tax;
+
+    return { subtotal, tax, discount, total, errors };
+}
+
+
+interface PaginatedRequest {
+    page: number;
+    limit: number;
+    sortBy: string;
+    order: "asc" | "desc";
+}
+
+interface ApiResponse<T> {
+    statusCode: number;
+    data: T[];
+    meta: {
+        totalRecords: number;
+        totalPages: number;
+        currentPage: number;
+    };
+}
+
+function fetchPaginatedData<T>(
+    dataSource: T[], 
+    config: PaginatedRequest
+): ApiResponse<T> {
+    const sortedData = [...dataSource].sort((a: any, b: any) => {
+        if (a[config.sortBy] < b[config.sortBy]) return config.order === "asc" ? -1 : 1;
+        if (a[config.sortBy] > b[config.sortBy]) return config.order === "asc" ? 1 : -1;
+        return 0;
+    });
+
+    const startIndex = (config.page - 1) * config.limit;
+    const endIndex = startIndex + config.limit;
+    const paginatedData = sortedData.slice(startIndex, endIndex);
+
+    const totalPages = Math.ceil(dataSource.length / config.limit);
+
+    return {
+        statusCode: 200,
+        data: paginatedData,
+        meta: {
+            totalRecords: dataSource.length,
+            totalPages,
+            currentPage: config.page
+        }
+    };
+}
+
+
+interface SensorPayload {
+    deviceId: string;
+    temperature: number;
+    humidity: number;
+    statusCodes: number[];
+}
+
+interface DeviceDiagnosticReport {
+    deviceId: string;
+    isHealthy: boolean;
+    averages: { temp: number; humid: number };
+    criticalAlerts: string[];
+}
+
+function processTelemetryBatch(
+    payloads: SensorPayload[], 
+    tempThreshold: number
+): DeviceDiagnosticReport[] {
+    const groupings: { [key: string]: SensorPayload[] } = {};
+
+    for (const payload of payloads) {
+        if (!groupings[payload.deviceId]) {
+            groupings[payload.deviceId] = [];
+        }
+        groupings[payload.deviceId].push(payload);
+    }
+
+    const reports: DeviceDiagnosticReport[] = [];
+
+    for (const deviceId in groupings) {
+        const devicePayloads = groupings[deviceId];
+        let totalTemp = 0;
+        let totalHumid = 0;
+        const alerts: string[] = [];
+
+        for (const p of devicePayloads) {
+            totalTemp += p.temperature;
+            totalHumid += p.humidity;
+            if (p.temperature > tempThreshold) {
+                alerts.push(`Critical temperature warning: ${p.temperature}°C`);
+            }
+            if (p.statusCodes.includes(500)) {
+                alerts.push("Internal hardware state error detected.");
+            }
+        }
+
+        const avgTemp = totalTemp / devicePayloads.length;
+        const avgHumid = totalHumid / devicePayloads.length;
+
+        reports.push({
+            deviceId,
+            isHealthy: alerts.length === 0,
+            averages: { temp: avgTemp, humid: avgHumid },
+            criticalAlerts: alerts
+        });
+    }
+
+    return reports;
+}
+
+
+interface NetworkNode {
+    id: string;
+    connections: string[];
+}
+
+function findShortestNetworkPath(
+    graph: Map<string, NetworkNode>, 
+    startNodeId: string, 
+    endNodeId: string
+): string[] | null {
+    if (!graph.has(startNodeId) || !graph.has(endNodeId)) return null;
+
+    const queue: string[] = [startNodeId];
+    const visited = new Set<string>([startNodeId]);
+    const parentMap = new Map<string, string>();
+
+    while (queue.length > 0) {
+        const currentId = queue.shift()!;
+
+        if (currentId === endNodeId) {
+            const path: string[] = [];
+            let curr: string | undefined = endNodeId;
+            while (curr) {
+                path.push(curr);
+                curr = parentMap.get(curr);
+            }
+            return path.reverse();
+        }
+
+        const node = graph.get(currentId);
+        if (node) {
+            for (const neighbor of node.connections) {
+                if (!visited.has(neighbor)) {
+                    visited.add(neighbor);
+                    parentMap.set(neighbor, currentId);
+                    queue.push(neighbor);
+                }
+            }
+        }
+    }
+
+    return null;
+}
+
+
 console.log(isPalindrome("Hello"));   // false
 
 function printChars(text: string): void {
