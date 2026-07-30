@@ -891,3 +891,66 @@ function findMissingNumber(nums: number[]): number {
 }
 console.log(findMissingNumber([1, 2, 4, 5, 6]));
 
+interface UserProfile {
+    id: number;
+    username: string;
+    role: "admin" | "user";
+}
+
+function fetchUserRole(user: UserProfile): string {
+    if (user.role === "admin") {
+        return "Access level: Full Console Access";
+    }
+    return "Access level: Limited Viewer Access";
+}
+console.log(fetchUserRole({ id: 101, username: "sarthak_dev", role: "admin" }));
+
+
+type APIResponse<T> = {
+    status: "success" | "error";
+    data: T;
+    code: number;
+};
+
+function handleApiResponse<T>(response: APIResponse<T>): T | string {
+    if (response.code === 200) {
+        return response.data;
+    }
+    return "Error: System failed to fetch records.";
+}
+console.log(handleApiResponse({ status: "success", data: ["item1", "item2"], code: 200 }));
+
+
+interface OperationalConfig {
+    readonly apiKey: string;
+    endpoints: string[];
+    timeout?: number;
+}
+
+function initializeSystem(config: OperationalConfig): string {
+    const timeLimit = config.timeout ?? 30;
+    return `System loaded with API key reference using ${timeLimit}s fallback delay.`;
+}
+console.log(initializeSystem({ apiKey: "secret_abc123", endpoints: ["/v1/status"] }));
+
+
+type SuccessState = { status: "success"; records: string[] };
+type ErrorState = { status: "error"; message: string };
+type NetworkState = SuccessState | ErrorState;
+
+function renderNetworkUI(state: NetworkState): string {
+    switch (state.status) {
+        case "success":
+            return `Render items count: ${state.records.length}`;
+        case "error":
+            return `Alert dialogue error box: ${state.message}`;
+    }
+}
+console.log(renderNetworkUI({ status: "success", records: ["user1", "user2"] }));
+
+
+function extractObjectKeys<T extends object, K extends keyof T>(obj: T, keys: K[]): T[K][] {
+    return keys.map(key => obj[key]);
+}
+const productData = { sku: "LAP-102", price: 1200, stock: 45 };
+console.log(extractObjectKeys(productData, ["price", "stock"]));
