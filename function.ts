@@ -954,3 +954,89 @@ function extractObjectKeys<T extends object, K extends keyof T>(obj: T, keys: K[
 }
 const productData = { sku: "LAP-102", price: 1200, stock: 45 };
 console.log(extractObjectKeys(productData, ["price", "stock"]));
+
+function greet(name: string): string {
+    return `Hello, ${name}`;
+}
+console.log(greet("Sarthak"));
+
+
+interface User {
+    id: number;
+    email: string;
+}
+function processUser(user: User): string {
+    return `Processing ${user.email}`;
+}
+console.log(processUser({ id: 1, email: "test@email.com" }));
+
+
+type Status = "pending" | "approved" | "rejected";
+function updateStatus(current: Status): Status {
+    if (current === "pending") {
+        return "approved";
+    }
+    return current;
+}
+console.log(updateStatus("pending"));
+
+
+class Car {
+    constructor(public brand: string, private speed: number) {}
+    getSpeed(): number {
+        return this.speed;
+    }
+}
+const myCar = new Car("Tesla", 120);
+console.log(myCar.getSpeed());
+
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+console.log(identity<number>(42));
+
+
+interface Dimensions {
+    width: number;
+    height: number;
+}
+function calculateArea(rect: Dimensions): number {
+    return rect.width * rect.height;
+}
+console.log(calculateArea({ width: 10, height: 5 }));
+
+
+type ApiResponse<T> = {
+    data: T;
+    success: boolean;
+};
+const response: ApiResponse<string[]> = {
+    data: ["item1", "item2"],
+    success: true
+};
+console.log(response.data);
+
+
+function printLog(message: string, prefix?: string): void {
+    console.log(`${prefix ?? "LOG"}: ${message}`);
+}
+printLog("System initialized");
+
+
+enum Role {
+    Admin,
+    User,
+    Guest
+}
+function checkPermission(role: Role): boolean {
+    return role === Role.Admin;
+}
+console.log(checkPermission(Role.Admin));
+
+
+type Point = { x: number; y: number };
+function movePoint(p: Point, dx: number, dy: number): Point {
+    return { x: p.x + dx, y: p.y + dy };
+}
+console.log(movePoint({ x: 0, y: 0 }, 5, 10));
