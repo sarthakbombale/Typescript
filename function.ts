@@ -1198,3 +1198,50 @@ function isPalindrome(s: string): boolean {
     return cleanStr === reversedStr;
 }
 console.log(isPalindrome("A man, a plan, a canal: Panama"));
+function sum(num1: number, num2: number): number {
+    return num1 + num2;
+}
+console.log(sum(12, 5));
+function getConcatenation(nums: number[]): number[] {
+    return [...nums, ...nums];
+}
+console.log(getConcatenation());
+function twoSum(nums: number[], target: number): number[] {
+    const lookup = new Map<number, number>();
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (lookup.has(complement)) {
+            return [lookup.get(complement)!, i];
+        }
+        lookup.set(nums[i], i);
+    }
+    return [];
+}
+console.log(twoSum(, 9));
+function isPalindrome(s: string): boolean {
+    const cleanStr = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+    let left = 0;
+    let right = cleanStr.length - 1;
+    while (left < right) {
+        if (cleanStr[left] !== cleanStr[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+console.log(isPalindrome("A man, a plan, a canal: Panama"));
+function maxProfit(prices: number[]): number {
+    let minPrice = Infinity;
+    let maxProfitValue = 0;
+    for (let i = 0; i < prices.length; i++) {
+        if (prices[i] < minPrice) {
+            minPrice = prices[i];
+        } else if (prices[i] - minPrice > maxProfitValue) {
+            maxProfitValue = prices[i] - minPrice;
+        }
+    }
+    return maxProfitValue;
+}
+console.log(maxProfit());
