@@ -1403,3 +1403,82 @@ function maxProfit(prices: number[]): number {
     return maxProfitVal;
 }
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+function twoSum(nums: number[], target: number): number[] {
+    const lookup: { [key: number]: number } = {};
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (complement in lookup) {
+            return [lookup[complement], i];
+        }
+        lookup[nums[i]] = i;
+    }
+    return [];
+}
+console.log(twoSum([2, 7, 11, 15], 9));
+
+
+function groupAnagrams(words: string[]): string[][] {
+    const cache: { [key: string]: string[] } = {};
+    for (const word of words) {
+        const sortedWord = word.split("").sort().join("");
+        if (!cache[sortedWord]) {
+            cache[sortedWord] = [];
+        }
+        cache[sortedWord].push(word);
+    }
+    return Object.values(cache);
+}
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+
+
+function validParentheses(s: string): boolean {
+    const stack: string[] = [];
+    const mapping: { [key: string]: string } = { ")": "(", "}": "{", "]": "[" };
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        if (char in mapping) {
+            const topElement = stack.length > 0 ? stack.pop() : '#';
+            if (mapping[char] !== topElement) {
+                return false;
+            }
+        } else {
+            stack.push(char);
+        }
+    }
+    return stack.length === 0;
+}
+console.log(validParentheses("()[]{}"));
+
+
+function mergeIntervals(intervals: number[][]): number[][] {
+    if (intervals.length === 0) return [];
+    intervals.sort((a, b) => a[0] - b[0]);
+    const merged: number[][] = [intervals[0]];
+    for (let i = 1; i < intervals.length; i++) {
+        const current = intervals[i];
+        const lastMerged = merged[merged.length - 1];
+        if (current[0] <= lastMerged[1]) {
+            lastMerged[1] = Math.max(lastMerged[1], current[1]);
+        } else {
+            merged.push(current);
+        }
+    }
+    return merged;
+}
+console.log(mergeIntervals([[1, 3], [2, 6], [8, 10], [15, 18]]));
+
+
+function maxProfit(prices: number[]): number {
+    let minPrice = Infinity;
+    let maxProfitVal = 0;
+    for (let i = 0; i < prices.length; i++) {
+        if (prices[i] < minPrice) {
+            minPrice = prices[i];
+        } else if (prices[i] - minPrice > maxProfitVal) {
+            maxProfitVal = prices[i] - minPrice;
+        }
+    }
+    return maxProfitVal;
+}
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
