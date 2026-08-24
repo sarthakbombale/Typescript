@@ -2077,3 +2077,25 @@ function isPrime(num) {
 
 console.log(isPrime(11));
 console.log(isPrime(4));
+
+function createCounter() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+const fetchData = () => new Promise(resolve => setTimeout(() => resolve("Data loaded"), 1000));
+
+async function showData() {
+    console.log("Starting...");
+    const result = await fetchData();
+    console.log(result);
+}
+showData();const animal = { eats: true };
+const dog = Object.create(animal);
+console.log(dog.eats); // true
+
