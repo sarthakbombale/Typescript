@@ -194,3 +194,33 @@ var newUser = {
     name: "Arjun",
     email: "arjun@example.com"
 };
+
+const numbers: number[] =;
+console.log(numbers[0]);
+
+
+const frameworks: Array<string> = ["React", "NestJS", "Express"];
+frameworks.push("Angular");
+console.log(frameworks);
+
+
+const mixedPayload: (string | number)[] = ["HTTP_STATUS", 200, "SUCCESS", 201];
+console.log(mixedPayload.length);
+
+
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+}
+const catalog: Product[] = [
+    { id: 1, name: "Laptop", price: 1200 },
+    { id: 2, name: "Phone", price: 600 }
+];
+console.log(catalog[1].name);
+
+
+const matrix: number[][] = [,
+    [4, 5, 6]
+];
+console.log(matrix[1][1]);
