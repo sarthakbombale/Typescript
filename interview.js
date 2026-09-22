@@ -2099,3 +2099,61 @@ showData();const animal = { eats: true };
 const dog = Object.create(animal);
 console.log(dog.eats); // true
 
+function reverseString(str){
+  let reverse = "";
+  for(let i = str.length -1;i >= 0;i--){
+    reverse += str[i];
+  }
+  return reverse;
+}
+console.log(reverseString("Hello"));
+
+function isPalindomecheck(str){
+  let reverse ="";
+  for(let i = str.length-1; i >=0;i--){
+    reverse += str[i];
+  }
+  return reverse === str;
+}
+console.log(isPalindomecheck("mom"));
+console.log(isPalindomecheck("Mom"));
+
+function reverString(str){
+ return str.split('').reverse().join('');
+}
+
+console.log(reverString("Hello"))
+
+function isPalindrome(str){
+  let reverse = str.split('').reverse().join('');
+  return reverse === str;
+}
+console.log(isPalindrome("mom"));
+console.log(isPalindrome("tom"));
+
+const users = [
+  { name: "A", age: 22, active: true },
+  { name: "B", age: 17, active: true },
+  { name: "C", age: 30, active: false },
+  { name: "D", age: 25, active: true }
+];
+
+const activeUsers = users.filter(user => user.active && user.age >18);
+console.log(activeUsers);
+
+function findLargest(arr){
+  return Math.max(...arr);
+}
+console.log(findLargest([23,67,88,97]));
+
+function findLargest(arr){
+  let max = [0];
+  for(let i = 1; i < arr.length;i++){
+    if(arr[i] > max){
+      max = arr[i];
+    }
+  }
+  return max
+}
+const number= [10, 5, 20, 8, 15]; 
+console.log(findLargest(number));
