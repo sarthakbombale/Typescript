@@ -2157,3 +2157,63 @@ function findLargest(arr){
 }
 const number= [10, 5, 20, 8, 15]; 
 console.log(findLargest(number));
+
+function findLargest(arr){
+  let max = [0];
+  for(let i = 1;i < arr.length;i++){
+    if(arr[i] > max){
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+const newArr = [12,1,34,56,78,98];
+console.log(findLargest(newArr));
+
+function isStrPalindrome(str){
+  let reverse = "";
+  for(let i = str.length -1; i >= 0;i--){
+    reverse += str[i];
+  }
+  return reverse === str ;
+}
+console.log(isStrPalindrome("mom"));
+console.log(isStrPalindrome("tom"));
+console.log(isStrPalindrome("madam"));
+
+function reverseString(str){
+  let reverse ="";
+  for(let i = str.length -1;i >= 0;i--){
+    reverse += str[i]
+  }
+  return reverse;
+}
+console.log(reverseString("Hello"));
+
+function largest(arr){
+  let max = -Infinity;
+  for(let i = 0;i < arr.length;i++){
+    arr[i] > max;
+    max = arr[i];
+  }
+  return max;
+}
+const newLarge = [23,45,67,87];
+console.log(largest(newLarge));
+
+
+function revStr(str){
+  let reverse = "";
+  for(let i = str.length -1;i >= 0;i--){
+    reverse += str[i]
+  }
+  return{
+    reverString:reverse,
+    returnLength:reverse.length
+  }
+}
+const result = revStr("Hellow World");
+
+console.log("Reversed:",result.reverString);
+console.log("Length:",result.returnLength);
