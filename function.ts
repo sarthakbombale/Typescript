@@ -1482,3 +1482,37 @@ function maxProfit(prices: number[]): number {
     return maxProfitVal;
 }
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+const scores: number[] =;
+const targetedScores = scores.filter(score => score >= 90);
+console.log(targetedScores);
+
+
+type ServerConfig = [string, number, boolean];
+const primaryNode: ServerConfig = ["127.0.0.1", 8080, true];
+console.log(primaryNode[0]);
+
+
+interface Task {
+    readonly id: string;
+    title: string;
+    isCompleted: boolean;
+}
+const todoList: Task[] = [
+    { id: "t1", title: "Review PRs", isCompleted: false },
+    { id: "t2", title: "Deploy Backend", isCompleted: true }
+];
+todoList[0].isCompleted = true;
+console.log(todoList);
+
+
+function getFirstElement<T>(arr: T[]): T {
+    return arr[0];
+}
+console.log(getFirstElement<string>(["production", "staging"]));
+console.log(getFirstElement<number>([404, 500, 200]));
+
+
+const payloadCache = new Map<string, string[]>();
+payloadCache.set("roles", ["admin", "manager"]);
+console.log(payloadCache.get("roles"));
