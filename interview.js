@@ -2217,3 +2217,45 @@ const result = revStr("Hellow World");
 
 console.log("Reversed:",result.reverString);
 console.log("Length:",result.returnLength);
+
+function reverseString(str){
+  let reversed = "";
+
+  for(let i = str.length -1; i >= 0;i--){
+    reversed += str[i];
+  }
+  return reversed;
+}
+const rev = "string"
+
+console.log(reverseString(rev));
+console.log(rev.length);
+
+
+function findSmallest(arr){
+  let smallest = -Infinity;
+
+  for(let i = 0; i < arr.length;i++){
+    if(arr[i] < smallest){
+      smallest = arr[i];
+    }
+  }
+  return smallest
+}
+console.log(findSmallest([33,4,-25,6,78,3,7,2,8,9,3,23,4]))
+
+function findSecondLargest(arr){
+  let largest = -Infinity;
+  let secondLargest = -Infinity;
+
+  for(let i = 0; i < arr.length;i++){
+    if(arr[i] > largest){
+       secondLargest = largest;
+      largest = arr[i];
+    } else if( arr[i] > secondLargest && arr[i] !== largest){
+      secondLargest = arr[i]
+    }
+  }
+  return secondLargest
+}
+console.log(findSecondLargest([33,42,-25,6,78,3,7,2,8,9,3,23,4]))
