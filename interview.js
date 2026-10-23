@@ -2347,3 +2347,107 @@ function fibonacci(n){
   }
 }
 fibonacci(10)
+
+function findSecondLargest(arr){
+  let largest = -Infinity;
+  let secondLargest = -Infinity;
+
+  for(let i = 0; i < arr.length;i++){
+    if(arr[i] > largest){
+       secondLargest = largest;
+      largest = arr[i];
+    } else if( arr[i] > secondLargest && arr[i] !== largest){
+      secondLargest = arr[i]
+    }
+  }
+  return secondLargest
+}
+console.log(findSecondLargest([33,42,-25,6,78,3,7,2,8,9,3,23,4]))
+
+function isPalindrome(str) {
+    let reversed = "";
+
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+
+    return str === reversed;
+}
+
+console.log(isPalindrome("madam"));
+console.log(isPalindrome("hello"));
+
+function countVowels(str){
+  let count = 0;
+
+  for(let i = 0; i < str.length; i++){
+
+    let char = str[i].toLowerCase(); 
+
+    if(
+      char === "a" ||
+      char === "e" ||
+      char === "i" ||
+      char === "o" ||
+      char === "u" 
+    ) {
+      count ++
+    }
+  }
+  return count;
+}
+console.log(countVowels("jAvAscrupt"));
+console.log(countVowels("LEETCODE"))
+
+function isNumberEvenOdd(arr){
+  for(let i = 0; i < arr.length;i++){
+    if(arr[i] % 2 === 0){
+       console.log( arr[i],"is even");
+    }else{
+      console.log(arr[i],"is odd")
+    }
+  }
+}
+isNumberEvenOdd([1,3,4,5,6,78,8])
+
+function getEvenNumber(arr){
+  let result = [];
+  let index = 0;
+
+  for(let i = 0; i < arr.length; i++){
+    if( arr[i] % 2 === 0){
+      result[index] = arr[i];
+      index++
+    }
+  }
+  return result
+}
+console.log(getEvenNumber([1, 2, 3, 4, 5, 6]));
+
+function isPrime(num){
+  if(num < 2){
+    return false;
+}
+    for(let i = 2; i < num; i++){
+      if(num % i === 0){
+        return false;
+      }
+    }
+   return true;
+  }
+ console.log(isPrime([7]))
+ console.log(isPrime([4]))
+
+function fibonacci(n){
+  let a = 0;
+  let b = 1;
+
+  for(let i = 0; i < n; i++){
+    console.log(a);
+
+    let next = a + b;
+    a = b;
+    b = next;
+  }
+}
+fibonacci(10)
