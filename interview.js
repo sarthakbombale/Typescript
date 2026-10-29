@@ -2452,3 +2452,53 @@ function fibonacci(n){
 }
 fibonacci(10)
 
+function deepClone(obj) {
+  // Handle primitives and null
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+  
+  // Handle Arrays
+  if (Array.isArray(obj)) {
+    return obj.map(item => deepClone(item));
+  }
+  
+  // Handle Objects
+  const clonedObj = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      clonedObj[key] = deepClone(obj[key]);
+    }
+  }
+  return clonedObj;
+}
+
+// Usage
+const original = { a: 1, b: { c: 2 } };
+const clone = deepClone(original);
+clone.b.c = 99;
+console.log(original.b.c); // 2 (Original is unaffected)
+
+const removeDuplicates = (arr) => [...new Set(arr)];
+
+// Usage
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 1])); // [1, 2, 3, 4]
+let arr = [1, 2, 3, 4, 5]
+let rev = [];
+for (let i = arr.length - 1; i >= 0; i--) {
+    rev += arr[i]
+}
+console.log()
+
+let nums = [10, 20, 30];
+let revNums = [];
+for (let i = nums.length - 1; i >= 0; i--) {
+    revNums.push(nums[i]);
+}
+console.log(revNums);
+let nums = [10, 20, 30];
+let revNums = [];
+for (let i = nums.length - 1; i >= 0; i--) {
+    revNums.push(nums[i]);
+}
+console.log(revNums);
